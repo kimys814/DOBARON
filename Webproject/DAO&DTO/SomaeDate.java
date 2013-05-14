@@ -265,9 +265,9 @@ public class SomaeDate /*extends JApplet*/{
 		String Allemail="";
 		
 		try{
-			String jdbcDriver = "jdbc:mysql://localhost/ii_nbrick?"+"useUnicode=true&characterEncoding=euckr";
-			String dbUser = "ii_nbrick";
-			String dbPass = "java1440";
+			String jdbcDriver = "jdbc:mysql://localhost/ii_javakings?"+"useUnicode=true&characterEncoding=euckr";
+			String dbUser = "ii_javakings";
+			String dbPass = "jang8410";
 			String query= "SELECT * from MEMBER where id = '"+sessionID+"'";
 
 			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
