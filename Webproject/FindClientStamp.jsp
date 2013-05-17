@@ -1,9 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
    
-
-<!-- 수정해야함 -->
-
+    <% request.setCharacterEncoding("euc-kr"); 
+    String kind = (String)session.getAttribute("kind");
+    if(kind == null){
+    	response.sendRedirect("../index.jsp");
+    }
+    if(kind.equals("somae")){  
+    }else if(kind.equals("admin")){
+    }else{
+    	response.sendRedirect("../index.jsp");
+    }
+    %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -133,11 +141,11 @@ function MM_preloadImages() { //v3.0
   <div class="header" style="filter: alpha(opacity=100); font-family: Tahoma, Geneva, sans-serif; font-size: small; color: #FFF;">
   	
   		<h1 align="center" >
-        	<a href="index.jsp"> <font color="#BBBBBB">PonCoo</font></a>&nbsp;&nbsp;&nbsp;
-            <a href="FindClientStamp.jsp"><font color="#66FFCC">쿠폰입력</font></a>&nbsp;&nbsp;&nbsp;
-           	<a href="sopBoard.jsp"><font color="#BBBBBB">게시판</font></a>&nbsp;&nbsp;&nbsp;
-            <a href="couponList.jsp"><font color="#BBBBBB">쿠폰내역조회</font></a>&nbsp;&nbsp;&nbsp;
-            <a href="couponList.jsp"><font color="#BBBBBB">SMS메세지</font></a>&nbsp;&nbsp;&nbsp;
+        	<a href="../index.jsp"> <font color="#BBBBBB">PonCoo</font></a>&nbsp;&nbsp;&nbsp;
+            <a href="/coupon/FindClientStamp.jsp"><font color="#66FFCC">쿠폰입력</font></a>&nbsp;&nbsp;&nbsp;
+           	<a href="/couboard/shopBoard.jsp"><font color="#BBBBBB">게시판</font></a>&nbsp;&nbsp;&nbsp;
+            <a href="/selectSomae/couponList.jsp"><font color="#BBBBBB">쿠폰내역조회</font></a>&nbsp;&nbsp;&nbsp;
+            <a href="/selectSomae/couponList.jsp"><font color="#BBBBBB">SMS메세지</font></a>&nbsp;&nbsp;&nbsp;
         </h1> 
         
 	
@@ -146,7 +154,7 @@ function MM_preloadImages() { //v3.0
   
   	<div class="content" align="center" >
    
-
+   		<iframe src="FindClientStamp-ori.jsp" align="top" width="1010px" height="300px" scrolling="no" frameborder="0"></iframe>
         
     <!-- end .content -->
   	</div>
