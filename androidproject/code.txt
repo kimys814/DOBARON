@@ -1,0 +1,27 @@
+﻿
+var getUrlParameter = function (){  	
+	  
+    var ParameterObject = new Object();   
+	
+    var locate = location.href;   
+    if(locate.indexOf("?")==-1){  
+        return ParameterObject;  
+    } 
+
+    var parameter = locate.split("?")[1];	 
+    var paramAreay = parameter.split("&");   
+    for ( var i=0; i<paramAreay.length; i++ )   
+    {   
+        var tem = paramAreay[i].split("=");   
+        ParameterObject[tem[1]] = tem[0];   
+    }   
+    getUrlParameter = function () { return ParameterObject; }   
+    return ParameterObject;   
+};   
+for(var ele in getUrlParameter()){}
+
+
+html 안에서 Get방식으로 넘어온 인자값을 받아내는 소스
+자바스크립트를 이용해서 URL의 ?값부터 =값 까지를 파라메터 변수로 읽어내고 그 뒤의 값을
+인자로 읽어낼수 있게됨 누군가가 만든소스 굳.
+
