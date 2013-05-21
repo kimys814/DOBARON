@@ -24,7 +24,7 @@ public class clientcouponDAO {
 
 		try{
 			InitialContext initCtx=new InitialContext();
-			DataSource ds=(DataSource)initCtx.lookup("java:comp/env/jdbc/ii_nbrick");
+			DataSource ds=(DataSource)initCtx.lookup("java:comp/env/jdbc/ii_javakings");
 			conn= ds.getConnection();
 		}catch(Exception e){
 			e.printStackTrace();
