@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="StyleSheet" href="barcode.css" type="text/css" />
+<script src="barcode.js"></script>
+<link href="/inc/text_style.css" rel="stylesheet">
+<style type="text/css">
+*{
+	margin:0px;
+	padding:0px;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+div#footer{
+	background-image:url("img/foot.png");   
+	position:fixed;
+	position:absolute;
+	bottom:0; 
+	width:100%; 
+	vertical-align:middle;
+    margin:0 auto;
+    padding:0px;
+    z-index:-1; 
+    background-repeat: no-repeat;
+   
+    } 
+div#button{
+
+    float: left;
+
+    
+    
+    }
+div#main{
+	background-image:url("img/body.png");   
+	bottom:0; 
+	width:100%; 
+	height:270px;
+    margin:0 auto;
+    padding:0px;
+    background-repeat: no-repeat;
+    } 
+
+</style>
+<script type="text/javascript">
+/*function onLoad() {
+
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+}
+
+function onDeviceReady() {
+
+    document.addEventListener("backbutton", onBackKeyDown, false);
+
+}
+
+
+function onBackKeyDown() {
+
+
+	 navigator.app.exitApp();
+}
+*/
+var getUrlParameter = function (){  					//ajax�뺥깭  
+	  
+    var ParameterObject = new Object();   
+	
+    var locate = location.href;   
+    if(locate.indexOf("?")==-1){  //?紐살갼�꾧꼍��
+        return ParameterObject;   //undefined 由ы꽩
+    } 
+
+    var parameter = locate.split("?")[1];	// '?'媛믪씠 �ㅼ뼱媛�怨�遺꾨━    
+    var paramAreay = parameter.split("&");   
+    for ( var i=0; i<paramAreay.length; i++ )   
+    {   
+        var tem = paramAreay[i].split("=");   
+        ParameterObject[tem[1]] = tem[0];   
+    }   
+    getUrlParameter = function () { return ParameterObject; }   
+    return ParameterObject;   
+};   
+for(var ele in getUrlParameter()){}//ele�덉뿉 �몃뱶��踰덊샇 異붿텧��媛믪씠 �ㅼ뼱媛꾨떎
+function encode()
+{
+  var strValue =ele; //諛붿퐫�쒗솕 �쒖폒以�踰덊샇 ��엯
+  var strBarcodeHTML = code128(strValue);
+  document.getElementById("barcode").innerHTML = strBarcodeHTML;
+}
+function goMain(){
+	location.replace('code128.html?userPhone='+ele);
+}
+function goList(){
+	location.replace('Gate.html?userPhone='+ele);
+}
+</script>
+</head>
+<body>
+<div>
+<img src="img/top.png">
+</div>
+<div class="barcode128h" id="barcode"></div>
+
+<script type="text/javascript">
+encode();
+</script>
+
+<div id="main"><font size=5 color="red">여기는 광고</font> </div>
+<div id="footer">
+<div style="float: left"><a href="javascript:goMain()"><img src="img/one.png" border="0"></a></div>
+<div style="float: left"><a href="javascript:goList()"><img src="img/dtwo.png" border="0"></a></div>
+<div style="float: left"><a href="javascript:goMain()"><img src="img/dthree.png" border="0"></a></div>
+<div style="float: left"><img src="img/dfour.png" border="0" onclick="javascript:goMain()"></div>
+</div>
+
+</body>
+</html>
