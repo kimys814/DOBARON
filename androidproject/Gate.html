@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>메인 화면</title>
+<script type ="text/javascript" src="httpRequest.js"> </script>
+</head>
+<body>
+<script type="text/javascript">    
+//<![CDATA[       
+    /**   
+    * getUrlParameter   
+    *   
+    * @description : 현재 url의 ?로 표기된 parameter 리턴   
+    * @author      : blog.byuli.com   
+    * @version     : 20081115   
+    * @return      : parameter의 object 형태로 리턴   
+    */  
+    var getUrlParameter = function (){  					//ajax형태  
+  
+        var ParameterObject = new Object();   
+    	
+        var locate = location.href;   
+        if(locate.indexOf("?")==-1){  //?못찾을경우 
+            return ParameterObject;   //undefined 리턴
+        } 
+  
+        var parameter = locate.split("?")[1];	// '?'값이 들어간 곳 분리    
+        var paramAreay = parameter.split("&");   
+        for ( var i=0; i<paramAreay.length; i++ )   
+        {   
+            var tem = paramAreay[i].split("=");   
+            ParameterObject[tem[1]] = tem[0];   
+        }   
+        getUrlParameter = function () { return ParameterObject; }   
+        return ParameterObject;   
+    };   
+    for(var ele in getUrlParameter()){}//ele안에 핸드폰 번호 추출된 값이 들어간다
+
+    
+    //폰번호 자체를 안드로이드 자체내에서  추출한 후에 GET방식을 통해 전송  -- jsp페이지가 아니라서 html로 넘겨야 하다보니 조금 노가다 코드가 들어갔다.
+    //?부분을 분리해서 뒤의 값만 추출.. 즉 핸드폰 번호 추출.
+    </script>
+
+<!-- 	----------------------------------------------------------------------------------폰번호 전송			 -->
+<script type="text/javascript">
+/* 자바 스크립트 파일로 모듈 정리
+var httpRequest = null;
+function getXMLHttpRequest()//브라우저 식별 코드
+{
+	if(window.ActiveXObject){
+		try{
+			return new ActiveXObject("Msxml2.XMLHTTP");
+		}catch(e){
+			try{
+				return new ActiveXObject("Microsoft.XMLHTTP");
+			}catch(e1){
+				return null;
+			}
+			
+		}
+	}else if(window.XMLHttpRequest){
+		return new XMLHttpRequest();
+	}else{	//브라우저 식별 실패
+		return null;
+	}
+	
+}
+
+function load(url){
+	//브라우저에 따른 XMLHttpRequest 객체를 얻어온후 httpRequest 전역변수에 담는다.
+	httpRequest = getXMLHttpRequest();
+	//지정한 URL에 Pst 방식으로 데이터를 요청한다.
+	//httpRequest객체의 상태변화가 있을때 호출할 함수를 지정한다.
+	httpRequest.onreadystatechange = viewMessage;
+	httpRequest.open("POST",url, true);//url주소를 포스트 방식으로 열준비를한다.false로하면 서버와의 통신이 끝난뒤 다음줄 실행
+	httpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=euc-kr"); 
+	httpRequest.send(userPhone);//값 대입해줘요
+	
+}
+*/
+function check(tmp)//아이디 값이 있는지 없는 지 패스워드가 널인 지 아닌지를 판단하는 로직이 들어간 함수
+{
+	
+	if(tmp=='0'){
+		location.href='InsertPwd.html?userPhone='+ele;//패스워드 설정해줄 창
+	}else if(tmp=='1')
+	{	
+		location.replace("Shoplist.html?userPhone="+ele);//바코드 있는페이지로이동 이곳은 번호와 비번 둘다 문제 없는상황일때
+	}
+}
+function viewMessage(){
+	if(httpRequest.readyState==4){//데이의 전부를 받은상태
+			if(httpRequest.status==200){//요청성공
+				//alert(httpRequest.responseText);
+				var tmp = httpRequest.responseText;//서버에서 판별 값 0 또는 1
+				check(tmp);
+				//alert(httpRequest.responseText);
+			}else{
+				alert("reconnecting...^^*");
+				
+				location.href='code128.html?userPhone='+ele;
+			}
+	}
+}
+
+</script>
+<script type="text/javascript">
+var params="userPhone="+ele;//핸드폰 번호 서버로 전송
+load("http://javakings.iisweb.co.kr/App/App_1.jsp", params, viewMessage,"POST");
+</script>
+
+</body>
+</html>
