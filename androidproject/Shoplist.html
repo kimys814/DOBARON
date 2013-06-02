@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<script type ="text/javascript" src="httpRequest.js"> </script>
+<title>:::: Shop List ::::</title>
+<style type="text/css">
+*{
+	margin:0px;
+	padding:0px;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+div#footer{
+	background-image:url("img/foot.png");   
+	position:fixed;
+	position:absolute;
+	bottom:0; 
+	width:100%; 
+    margin:0 auto;
+    padding:0px;
+    z-index:-1; 
+    background-repeat: no-repeat;
+    }
+</style>
+<script type="text/javascript">
+var boardShop='';
+var getUrlParameter = function (){  					//ajax형태  
+	  
+    var ParameterObject = new Object();   
+	
+    var locate = location.href;   
+    if(locate.indexOf("?")==-1){  //?못찾을경우 
+        return ParameterObject;   //undefined 리턴
+    } 
+
+    var parameter = locate.split("?")[1];	// '?'값이 들어간 곳 분리    
+    var paramAreay = parameter.split("&");   
+    for ( var i=0; i<paramAreay.length; i++ )   
+    {   
+        var tem = paramAreay[i].split("=");   
+        ParameterObject[tem[1]] = tem[0];   
+    }   
+    getUrlParameter = function () { return ParameterObject; }   
+    return ParameterObject;   
+};   
+for(var ele in getUrlParameter()){}//ele안에 핸드폰 번호 추출된 값이 들어간다
+
+function viewMessage(){
+	if(httpRequest.readyState==4){//데이의 전부를 받은상태
+			if(httpRequest.status==200){//요청성공
+				//alert(httpRequest.responseText);
+				/*
+				소매리스트를 뽑아주는 로직 필요
+				*/
+				var resultText= httpRequest.responseText;
+				var result = resultText.split('|');
+				//var count = parseInt(s, radix)
+				//var tmp = httpRequest.responseText;//서버에서 판별 값 0 또는 1
+				//document.f.ff.value = tmp;
+				var html ='';
+				for(var i= 0 ; i<result.length-1; i++){
+					html +="<h3><a href=\"javascript:select('"+result[i]+"')\">"+result[i]+"</a></h3>";
+				}
+				var listView =document.getElementById('suggestList');
+				listView.innerHTML=html;
+			}else{
+				alert("요청실패했네요: " + httpRequest.status);
+			}
+	}
+}
+function viewMessage2(){
+	if(httpRequest.readyState==4){//데이의 전부를 받은상태
+			if(httpRequest.status==200){//요청성공
+				//alert(httpRequest.responseText);
+				/*
+				소매리스트를 뽑아주는 로직 필요
+				*/
+				var total= httpRequest.responseText;
+				location.replace("Showcou.html?total="+total+"&userPhone="+ele+"&Shop="+boardShop);				
+				
+			}else{
+				alert("요청실패했네요: " + httpRequest.status);
+			}
+	}
+}
+function goMain(){
+	location.replace('code128.html?userPhone='+ele);
+}
+function goList(){
+	location.replace('Shoplist.html?userPhone='+ele);
+}
+function select(shop){
+	boardShop=shop;
+	load("http://nbrick.iisweb.co.kr/App/App_3.jsp","userPhone="+ele+"&Somae="+shop,viewMessage2,"POST");
+}
+</script>
+</head>
+<body >
+<div>
+<img src="img/top.png">
+</div>
+<script type="text/javascript">
+load("http://javakings.iisweb.co.kr/App/App_2.jsp","userPhone="+ele,viewMessage,"POST");
+</script>
+<div id="suggest" align="center" >
+	<div id="suggestList"></div>
+</div>
+<div id="footer">
+<div style="float: left"><a href="javascript:goMain()"><img src="img/done.png" border="0"></a></div>
+<div style="float: left"><a href="javascript:goList()"><img src="img/two.png" border="0"></a></div>
+<div style="float: left"><a href="javascript:goMain()"><img src="img/dthree.png" border="0"></a></div>
+<div style="float: left"><a href="javascript:goMain()"><img src="img/dfour.png" border="0"></a></div>
+</div>
+</body>
+
+</html>
