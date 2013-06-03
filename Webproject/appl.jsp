@@ -10,7 +10,7 @@
 <!--
 body {
 	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
-	background-image:url("/img/inforBgimg.jpg");
+	background-image:url("/img/bimg.jpg");
 	background-repeat:repeat-x;
 	margin: 0;
 	padding: 0;
@@ -51,7 +51,6 @@ a:hover, a:active, a:focus { /* 이 선택기 그룹은 마우스를 사용하는 사람과 동일한
 	min-width: 1000px;/* 이 레이아웃이 지나치게 좁아지는 것을 방지하기 위해 min-width를 사용할 수 있습니다. 이 속성을 사용하면 사이드 열에서 선 길이를 더욱 쉽게 읽을 수 있습니다. IE6에서는 이 선언이 적용되지 않습니다. */
 	
 	margin: 0 auto; /* 측면 자동 값, 폭으로 연결, 레이아웃 가운데 정렬. .container의 폭을 100%로 설정하는 경우에는 필요하지 않습니다. */
-	text-align:center;
 }
 
 /* ~~머리글에는 폭이 지정되지 않습니다. 레이아웃의 전체 폭이 확장됩니다. 연결된 자체 로고로 대체되어야 하는 이미지 자리 표시자를 포함합니다.~~ */
@@ -64,7 +63,7 @@ a:hover, a:active, a:focus { /* 이 선택기 그룹은 마우스를 사용하는 사람과 동일한
 	vertical-align:bottom; /* */ 
     bottom: 100; /*탑메뉴 위치를 결정하는 값 */
     position:fixed; /*어떤 방식으로 할껀지 결정하는 값 fixed는 스크롤과 상관없이 고정 */
-	/*height:200px;*/
+	height:200px;
 	width:100%;
 	min-width:1100px;
 
@@ -74,8 +73,8 @@ a:hover, a:active, a:focus { /* 이 선택기 그룹은 마우스를 사용하는 사람과 동일한
 	
 	max-width: 1000px;/* 대형 모니터에서 이 레이아웃이 지나치게 넓어지는 것을 방지하기 위해 max-width를 사용할 수 있습니다. 이 속성을 사용하면 선 길이를 더욱 쉽게 읽을 수 있습니다. IE6에서는 이 선언이 적용되지 않습니다. */
 	min-width: 1000px;/* 이 레이아웃이 지나치게 좁아지는 것을 방지하기 위해 min-width를 사용할 수 있습니다. 이 속성을 사용하면 사이드 열에서 선 길이를 더욱 쉽게 읽을 수 있습니다. IE6에서는 이 선언이 적용되지 않습니다. */
-	
-	width:2000px;
+	height:800px;
+	width:1000px;
 	padding: 10px 0;
 	margin: 0 auto;
 	
@@ -83,16 +82,12 @@ a:hover, a:active, a:focus { /* 이 선택기 그룹은 마우스를 사용하는 사람과 동일한
 }
 .topmenu {
 	
+	
 	padding: 0px 0;
 }
 .toplogo {
 	float:left;
 	width:220px;	
-}
-.setopmenu{
-	height:150px;
-	width:900px;
-
 }
 .topmenu1 {
 	height:40px;
@@ -105,25 +100,19 @@ a:hover, a:active, a:focus { /* 이 선택기 그룹은 마우스를 사용하는 사람과 동일한
 .topmenu3 {
 	width:100%;	
 }
-.setopbutton{
-	float:right;
-	width:150px;
-	
-}
 
 /* ~~ 레이아웃 정보입니다. ~~ 
 
 1) 패딩은 div의 위쪽 및/또는 아래쪽에만 배치됩니다. 이 div에 포함된 요소의 경우 측면에 패딩이 있습니다. 이를 통해 "상자 모델 수학"에서 제외됩니다. div 자체에 측면 패딩 또는 테두리를 추가하면 *전체* 폭을 만들기 위해 정의한 폭에 추가됩니다. div 내의 요소에서 패딩을 제거하고, 디자인에 필요한 패딩과 폭이 없는 상태로 내부에 두 번째 div를 배치할 수도 있습니다.
 
 */
-
 .content {
-	float:left;
-	height:1500px;
-	width:1000px;
-	padding: 0px 0;
-	text-align:center;
 	
+	height:800px;
+	width:1000px;
+	padding: 10px 0;
+	background-image:url("/img/main.png");
+
 
 }
 
@@ -176,21 +165,28 @@ function MM_preloadImages() { //v3.0
 </head>
 
 <body>
+
+
+
+	
+    
+   
     
 	<div class="header" style="filter: alpha(opacity=100); width: 100%; font-family: Tahoma, Geneva, sans-serif; font-size: larger; color: #000;">
     		
             <div class="headerin" style="filter:alpha(opacity=100)" style="margin:auto">
 				
                    <div class="toplogo" align="left">
-                     <div align="left"><a href="/index.jsp"><img src="img/toplogo.png" width="220" height="90" /></a></div>
+                     <div align="left"><a href="/index.jsp"><img src="img/logo.gif" width="220" height="90" /></a></div>
                    </div>
                    
                    <div class="topmenu">
                    
-        				<%if(session.getAttribute("id")==null){        %>
+        
+        					<%if(session.getAttribute("id")==null){        %>
         					<div class="topmenu1" align="right">
 			  				  <font color="#979797" size="3">폰안에 쿠폰::폰쿠</font>				  
-		  					</div>
+		  					  </div>
       	  	 
       						<%
 					        }else if(session.getAttribute("id")!=null){
@@ -222,10 +218,9 @@ function MM_preloadImages() { //v3.0
             						<a href="/infor.jsp"><font color="#626262">poncoo.com</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             						<a href="/search.jsp"><font color="#626262">커피점검색</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             						<a href="/propo.jsp"><font color="#626262">커피점추천</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            						<a href="/memberIn.jsp"><font color="#A4042D">가입신청</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            						<a href="/appl.jsp"><font color="#626262">어플받기</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            						<a href="/memberIn.jsp"><font color="#626262">가입신청</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            						<a href="/appl.jsp"><font color="#A4042D">어플받기</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             						<a href="/service.jsp"><font color="#626262">고객지원</font></a>
-                                    
             					</h5>
         					</div>
         						<%
@@ -239,7 +234,7 @@ function MM_preloadImages() { //v3.0
 				  				<input type="submit" value="로그인">				  
 			  				</div>
       	  							</form>  
-                                </div>
+                                    </div>
       							<%
 								}else if(session.getAttribute("id")!=null){
 							        %>
@@ -262,45 +257,82 @@ function MM_preloadImages() { //v3.0
 							     			}
 							        }
 							     			%>  
-           
-     				<!--topmenu end-->
-                    </div>
-                      
-                      
-                      
-                   <!--headerin end-->
-                  </div>
-   
-          <!--header end-->
-   </div>
-   	
-
-    	<div class="container" style="filter:alpha(opacity=100)"> 
-        
-        	<iframe width="1000" height="130" frameborder="0"></iframe>
             
-            <div class="setopmenu">
-            
-            <div class="setopbutton"><a href="/siteMap.jsp"><img src="/img/member.png"></a></div>
-            <div class="setopbutton"><a href="/marketing.jsp"><img src="/img/client.png"></a></div>
-            <div class="setopbutton"><a href="/infor.jsp"><img src="/img/wholeSale.png"></a></div>
-            <div class="setopbutton"><a href="/memberIn.jsp"><img src="/img/SelcoffeeShop.png"></a></div>
-            
-            
-            </div>
-        	<div class="content">
-            <img src="/img/memberIn.png">
-            	<iframe src="/SomaeRequest/Somae_1.jsp" width="800" height="500" frameborder="0" scrolling="no" frameborder="0"></iframe>
-            
-       	  	</div>
+      <!--topmenu end-->
+                      </div>
+                   <!--headin end-->
+                   </div>
              
+             
+             
+             
+             
+             
+            	
+                
+                
+            
+		
+      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+          <!--header end-->
+    
+    </div>		
+
+        
+        
+    	<div class="container" style="filter:alpha(opacity=100)"> 
+    
+               
+            	
+                
+             
+             
+             
+             
+                
+
+     	
+        	<div class="content">
+       	  </div>
+        
+        
+        	<div class="foothead" align="center">
+        		<img src="/img/foothead.png">
+        	</div>
+        
+        
+        
+        
+        
         	<div class="footer">
         
-        		<iframe src="/footer.jsp" width="1000" height="100" frameborder="0" scrolling="no" frameborder="0"></iframe>
+        		<iframe src="/footer.jsp" width="1000" height="100" frameborder="0" scrolling="no"></iframe>
         
         	</div>
-            
-           
         
 </div>
 			
