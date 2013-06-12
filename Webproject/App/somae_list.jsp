@@ -1,0 +1,1 @@
+<%@ page contentType="text/xml; charset=EUC-KR" %><%=request.getAttribute("imsi")%>
